@@ -4,13 +4,24 @@
     <title>Chat App</title>
     <link rel="icon" href="/img/favicon.png" />
     <link rel="stylesheet" href="/css/styles.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="chat">
       <div class="chat__sidebar" id="sidebar"></div>
       <div class="chat__main">
         <div id="messages" class="chat__messages"></div>
-
         <div class="compose">
           <form id="message-form">
             <input
@@ -19,7 +30,7 @@
               required
               autocomplete="off"
             />
-            <button>Send</button>
+            <button><ion-icon name="send"></ion-icon></button>
           </form>
           <button id="send-location">Send location</button>
         </div>
@@ -29,28 +40,38 @@
     <script id="message-template" type="text/html">
       <div class="message">
         <p>
-          <span class="message__name">{{username}}</span>
+          <span class="message__name">@ {{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
         </p>
-        <p>{{message}}</p>
+        <p class="message__text">{{message}}</p>
       </div>
     </script>
 
     <script id="location-message-template" type="text/html">
       <div class="message">
         <p>
-          <span class="message__name">{{username}}</span>
+          <span class="message__name">@{{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
         </p>
-        <p><a href="{{url}}" target="_blank">My current location</a></p>
+        <a href="{{url}}" target="_blank">
+          Click to see<ion-icon
+            style="font-size: 20px;"
+            name="location-sharp"
+          ></ion-icon
+        ></a>
       </div>
     </script>
     <script id="sidebar-template" type="text/html">
-      <h2 class="room-title">{{room}}</h2>
-      <h2 class="list-title">Users</h2>
+      <h2 class="room-title">
+        {{room}} <span><ion-icon name="ellipse-sharp"></ion-icon></span>
+      </h2>
+      <!-- <h2 class="list-title">Users</h2> -->
       <ul class="users">
         {{#users}}
-        <li>{{username}}</li>
+        <li>
+          <h3 class="username">@{{username}}</h3>
+          <ion-icon name="person"></ion-icon>
+        </li>
         {{/users}}
       </ul>
     </script>
@@ -60,5 +81,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/chat.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
   </body>
 </html>

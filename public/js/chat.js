@@ -42,6 +42,7 @@ const autoScroll = () => {
 
 socket.on("message", (message) => {
   console.log(message);
+
   const html = Mustache.render(messageTemplate, {
     username: message.username,
     message: message.text,
@@ -50,7 +51,6 @@ socket.on("message", (message) => {
   $messages.insertAdjacentHTML("beforeend", html);
   autoScroll();
 });
-
 socket.on("locationMessage", (message) => {
   console.log(message);
   const html = Mustache.render(locationMessageTemplate, {
@@ -117,3 +117,5 @@ socket.emit("join", { username, room }, (error) => {
     location.href = "/";
   }
 });
+
+//extra functionality////

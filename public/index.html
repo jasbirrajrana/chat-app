@@ -3,20 +3,49 @@
   <head>
     <title>Chat App</title>
     <link rel="icon" href="/img/favicon.png" />
-    <link rel="stylesheet" href="/css/styles.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="centered-form">
-      <div class="centered-form__box">
-        <h1>JOIN ROOM</h1>
+    <div class="big__container">
+      <div class="container">
+        <div class="container__text">
+          <h1>Join</h1>
+          <ion-icon name="logo-snapchat"></ion-icon>
+        </div>
         <form action="./chat.html">
           <label>Name</label>
-          <input type="text" name="username" placeholder="Name" required />
+          <input
+            type="text"
+            name="username"
+            placeholder="Display Name"
+            required
+            autocomplete="Off"
+          />
           <label>Room</label>
-          <input type="text" name="room" required placeholder="Room" />
-          <button>Join</button>
+          <input
+            type="text"
+            name="room"
+            required
+            placeholder="Room"
+            autocomplete="Off"
+          />
+          <button>Let me in</button>
         </form>
       </div>
     </div>
+    <div class="footer">
+      <p class="footer__text">
+        Made with❤️By <a href="">Jasbir Rajrana &#169;2020</a>
+      </p>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
   </body>
 </html>

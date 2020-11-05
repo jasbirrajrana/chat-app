@@ -1,6 +1,7 @@
 const socket = io();
 
 // Elements
+
 const $messageForm = document.querySelector("#message-form");
 const $messageFormInput = $messageForm.querySelector("input");
 const $messageFormButton = $messageForm.querySelector("button");
@@ -8,30 +9,40 @@ const $sendLocationButton = document.querySelector("#send-location");
 const $messages = document.querySelector("#messages");
 
 // Templates
+
 const messageTemplate = document.querySelector("#message-template").innerHTML;
 const locationMessageTemplate = document.querySelector(
   "#location-message-template"
 ).innerHTML;
 const sidebarTemplate = document.getElementById("sidebar-template").innerHTML;
+
 //options
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
+// autoScroll feature
 const autoScroll = () => {
   //new message element
   const $newMessage = $messages.lastElementChild;
-
   //height of the new element
   const newMessageStyles = getComputedStyle($newMessage);
-  const newMessageMargin = parseInt(newMessageStyles.marginBottom);
+  const newMessagePadding =
+    parseInt(newMessageStyles.paddingTop) +
+    parseInt(newMessageStyles.paddingBottom);
+  console.log(newMessagePadding);
+  const newMessageMargin =
+    parseInt(newMessageStyles.marginBottom) + newMessagePadding;
+  console.log(newMessageMargin);
   const newMessageHeight = $newMessage.offsetHeight + newMessageMargin;
-  //visible height
 
+  //visible height
   const visibleHeight = $messages.offsetHeight;
+
   //height of messages container
   const containerHeight = $messages.scrollHeight;
+
   //how far have i scroll
   const scrollOffset = $messages.scrollTop + visibleHeight;
 
@@ -117,5 +128,3 @@ socket.emit("join", { username, room }, (error) => {
     location.href = "/";
   }
 });
-
-//extra functionality////
